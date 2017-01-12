@@ -1,5 +1,9 @@
 var exec = require('cordova/exec')
 
+exports.isFbInstalled = function isFbInstalled(s, f) {
+  exec(s, f, 'FacebookConnectPlugin', 'isFbInstalled', [])
+}
+
 exports.getLoginStatus = function getLoginStatus (s, f) {
   exec(s, f, 'FacebookConnectPlugin', 'getLoginStatus', [])
 }
@@ -55,6 +59,3 @@ exports.activateApp = function (s, f) {
   exec(s, f, 'FacebookConnectPlugin', 'activateApp', [])
 }
 
-exports.getDeferredApplink = function (s, f) {
-	  exec(s, f, 'FacebookConnectPlugin', 'getDeferredApplink', [])
-}

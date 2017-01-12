@@ -345,8 +345,27 @@ public class ConnectPlugin extends CordovaPlugin {
             });
 
             return true;
+        } else if (action.equals("isFbInstalled")) {
+            executeIsFbInstalled(callbackContext);
+
+            return true;
         }
         return false;
+    }
+
+    private void executeIsFbInstalled(CallbackContext callbackContext) {
+
+        PluginResult pr;
+
+        try {
+            cordova.getActivity().getApplicationContext().getPackageManager().getPackageInfo("com.facebook.katana", PackageManager.GET_ACTIVITIES);
+            pr = new PluginResult(PluginResult.Status.OK, true);
+        } catch (PackageManager.NameNotFoundException e) {
+            pr = new PluginResult(PluginResult.Status.OK, false);
+        }
+
+        callbackContext.sendPluginResult(pr);
+        return;
     }
 
     private void executeGetDeferredApplink(JSONArray args,

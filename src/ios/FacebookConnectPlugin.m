@@ -56,6 +56,13 @@
 
 #pragma mark - Cordova commands
 
+
+- (void)isFbInstalled:(CDVInvokedUrlCommand *)command {
+    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
+                                                        messageAsBool:[[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"fb://"]]];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
 - (void)getLoginStatus:(CDVInvokedUrlCommand *)command {
     CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
                                                   messageAsDictionary:[self responseObject]];
