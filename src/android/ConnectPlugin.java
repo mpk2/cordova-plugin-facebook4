@@ -595,8 +595,8 @@ public class ConnectPlugin extends CordovaPlugin {
                 builder.setImageUrl(Uri.parse(params.get("picture")));
             if(params.containsKey("description"))
                 builder.setContentDescription(params.get("description"));
-            if (paramBundle.containsKey("hashtag"))
-                builder.setShareHashtag(new ShareHashtag.Builder().setHashtag(paramBundle.get("hashtag")).build());
+            if (params.containsKey("hashtag"))
+                builder.setShareHashtag(new ShareHashtag.Builder().setHashtag(params.get("hashtag")).build());
 
             messageDialog.show(builder.build());
 
